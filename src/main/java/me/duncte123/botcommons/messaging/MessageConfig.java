@@ -24,7 +24,7 @@ import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.MessageEmbed;
 import net.dv8tion.jda.api.entities.MessageType;
 import net.dv8tion.jda.api.entities.TextChannel;
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.requests.RestAction;
 import net.dv8tion.jda.api.requests.restaction.MessageAction;
 import net.dv8tion.jda.internal.utils.Checks;
@@ -666,12 +666,12 @@ public class MessageConfig {
          * Creates a config builder instance from a JDA guild message received event
          *
          * @param event
-         *     A {@link GuildMessageReceivedEvent} from JDA to get the text channel from
+         *     A {@link MessageReceivedEvent} from JDA to get the text channel from
          *
-         * @return A builder instance that was created from a {@link GuildMessageReceivedEvent}
+         * @return A builder instance that was created from a {@link MessageReceivedEvent}
          */
-        public static Builder fromEvent(GuildMessageReceivedEvent event) {
-            return new Builder().setChannel(event.getChannel()).replyTo(event.getMessage());
+        public static Builder fromEvent(MessageReceivedEvent event) {
+            return new Builder().setChannel(event.getMessage().getTextChannel()).replyTo(event.getMessage());
         }
     }
 }
